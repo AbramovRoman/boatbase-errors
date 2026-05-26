@@ -16,6 +16,13 @@ type BoatAlreadyOnBaseError struct {
 type ValidationError struct {
 	Field string
 }
+type BoatAlreadyInQueueError struct {
+	StateNumber string
+}
+
+func (e *BoatAlreadyInQueueError) Error() string {
+	return fmt.Sprintf("Лодка с госномером %s уже находится в очереди", e.StateNumber)
+}
 
 // Ошибка при неверном значении при входе на сайт
 func (e *BoatNotFoundError) Error() string {
